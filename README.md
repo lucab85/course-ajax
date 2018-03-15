@@ -1,3 +1,6 @@
+---
+---
+
 # Ajax
 
 This is the repo for [Udacity's Ajax course](). The course covers making asynchronous requests using three different methods:

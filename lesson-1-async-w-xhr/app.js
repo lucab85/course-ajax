@@ -8,5 +8,27 @@
         e.preventDefault();
         responseContainer.innerHTML = '';
         searchedForText = searchField.value;
+        
+		const imgRequest = new XMLHttpRequest();
+		imgRequest.onload = addImage;
+		imgRequest.onerror = function(err) {
+			requestError(err, 'image');
+		}
+		
+		imgRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);
+		imgRequest.setRequestHeader('Authorization', 'Client-ID bab5f865d344f1a8e2f3035a7c166fb8ef0b4da2832bfda84495b1d212c4bdc0');
+		imgRequest.send();
+
+		function addImage(){
+		   const data = JSON.parse(this.responseText);
+		   const firstImage = data.results[0];
+		   
+		   htmlContent = `<figure>
+			<img src="${firstImage.urls.regular}" alt="${searchedForText}">
+			<figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>
+		   </figure>`
+		   
+		   responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
+		}
     });
 })();
