@@ -67,7 +67,7 @@
 
 	function requestError(e, part) {
 		console.log(e);
-		responseContainer.insertAdjacentHTML('beforeend', `<p class="network-warning error-no-image">No retrieval of ${part}</p>`);
+		responseContainer.insertAdjacentHTML('beforeend', `<p class="network-warning error-no-image">Oh no! There was an error making a request for the ${part}.</p>`);
 	}
 
 })();
